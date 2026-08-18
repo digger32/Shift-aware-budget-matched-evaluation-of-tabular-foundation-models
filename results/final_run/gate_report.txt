@@ -1,0 +1,14 @@
+================================================================
+REVIEW-PROOFING GATE  | outdir=results/final_run
+================================================================
+[PASS] A1 clean-final-run       final pass clean: --no-resume, no skips, single run_started
+[PASS] B1 external-validity     3 comparative claim(s) each have an independent-dataset run
+[PASS] C1 calibration           'ece' present in 680 unit(s) (calibration present)
+[PASS] D1 optimism-gap          'optimism_gap' present in 255 unit(s) (HPO honesty)
+[PASS] E1 stats                 stats artifacts present: ['stats/omnibus.json', 'stats/posthoc.json']
+[PASS] F1 subsample-freeze      identical frozen subsample across models for 85 (dataset, seed) cells
+[PASS] F2 device-policy         device policy held for 680 unit(s)
+[PASS] F3 tuning-log            full 30-trial HPO log present for 255 tuned unit(s)
+[PASS] F4 all-units-ok          all 680 manifest entries ok
+================================================================
+GATE PASSED — numbers are clean to freeze.

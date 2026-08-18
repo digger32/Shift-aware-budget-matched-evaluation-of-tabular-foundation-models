@@ -1,0 +1,50 @@
+{
+  "id": {
+    "statistic": 60.94954449894882,
+    "p_value": 9.752918578420276e-11,
+    "n_datasets": 17,
+    "n_models": 8,
+    "models": [
+      "catb",
+      "lgbm",
+      "logreg",
+      "mlp",
+      "tabicl",
+      "tabpfn2",
+      "tabpfn25",
+      "xgb"
+    ]
+  },
+  "ood": {
+    "statistic": 11.38095238095238,
+    "p_value": 0.12284369592331874,
+    "n_datasets": 7,
+    "n_models": 8,
+    "models": [
+      "catb",
+      "lgbm",
+      "logreg",
+      "mlp",
+      "tabicl",
+      "tabpfn2",
+      "tabpfn25",
+      "xgb"
+    ]
+  },
+  "degradation": {
+    "statistic": 8.190476190476176,
+    "p_value": 0.31609808301405384,
+    "n_datasets": 7,
+    "n_models": 8,
+    "models": [
+      "catb",
+      "lgbm",
+      "logreg",
+      "mlp",
+      "tabicl",
+      "tabpfn2",
+      "tabpfn25",
+      "xgb"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "run_started": "2026-07-21T17:39:38.324576+00:00",
+  "no_resume": true,
+  "shard": "0/1",
+  "sampler": "random",
+  "axes": {
+    "datasets": [
+      "acs_income_ca2pr",
+      "acs_income_ca2sd",
+      "acs_mobility_ca2sd",
+      "acs_pubcov_ca2sd",
+      "cc18_1053",
+      "cc18_1067",
+      "cc18_1068",
+      "cc18_1461",
+      "cc18_1486",
+      "cc18_1489",
+      "cc18_151",
+      "cc18_1590",
+      "cc18_31",
+      "cc18_44",
+      "ts_brfss_diabetes",
+      "ts_college_scorecard",
+      "ts_diabetes_readmission"
+    ],
+    "models": [
+      "catb",
+      "lgbm",
+      "logreg",
+      "mlp",
+      "tabicl",
+      "tabpfn2",
+      "tabpfn25",
+      "xgb"
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "timeout_s": 1800,
+  "config": "runner/configs/grid.yaml"
+}

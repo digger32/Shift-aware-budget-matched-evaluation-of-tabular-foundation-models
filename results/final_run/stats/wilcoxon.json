@@ -1,0 +1,111 @@
+{
+  "id": {
+    "openml_cc18": {
+      "best_gbdt": "catb",
+      "tabicl": {
+        "vs": "catb",
+        "statistic": 3.0,
+        "p_value": 0.009765625,
+        "mean_delta": 0.005550152471815906
+      },
+      "tabpfn25": {
+        "vs": "catb",
+        "statistic": 26.0,
+        "p_value": 0.921875,
+        "mean_delta": -0.001487520908181783
+      },
+      "tabpfn2": {
+        "vs": "catb",
+        "statistic": 26.0,
+        "p_value": 0.921875,
+        "mean_delta": -0.0007307098087160679
+      }
+    },
+    "tableshift": {
+      "best_gbdt": "lgbm",
+      "tabicl": {
+        "vs": "lgbm",
+        "statistic": 1.0,
+        "p_value": 0.5,
+        "mean_delta": 0.0014018956535261362
+      },
+      "tabpfn25": {
+        "vs": "lgbm",
+        "statistic": 3.0,
+        "p_value": 1.0,
+        "mean_delta": 2.4337143301494946e-05
+      },
+      "tabpfn2": {
+        "vs": "lgbm",
+        "statistic": 0.0,
+        "p_value": 0.25,
+        "mean_delta": -0.0011754249280771002
+      }
+    },
+    "whyshift": {
+      "best_gbdt": "xgb",
+      "tabicl": {
+        "vs": "xgb",
+        "statistic": 1.0,
+        "p_value": 0.25,
+        "mean_delta": 0.003439999999999971
+      },
+      "tabpfn25": {
+        "vs": "xgb",
+        "statistic": 1.0,
+        "p_value": 0.25,
+        "mean_delta": 0.0015000000000000013
+      },
+      "tabpfn2": {
+        "vs": "xgb",
+        "statistic": 3.0,
+        "p_value": 0.625,
+        "mean_delta": 0.0005049999999999777
+      }
+    }
+  },
+  "ood": {
+    "tableshift": {
+      "best_gbdt": "xgb",
+      "tabicl": {
+        "vs": "xgb",
+        "statistic": 1.0,
+        "p_value": 0.5,
+        "mean_delta": 0.002727100591716001
+      },
+      "tabpfn25": {
+        "vs": "xgb",
+        "statistic": 1.0,
+        "p_value": 0.5,
+        "mean_delta": 0.0016007889546351777
+      },
+      "tabpfn2": {
+        "vs": "xgb",
+        "statistic": 0.0,
+        "p_value": 0.25,
+        "mean_delta": -0.0024351479289940656
+      }
+    },
+    "whyshift": {
+      "best_gbdt": "catb",
+      "tabicl": {
+        "vs": "catb",
+        "statistic": 4.0,
+        "p_value": 0.875,
+        "mean_delta": 0.0016703396108349589
+      },
+      "tabpfn25": {
+        "vs": "catb",
+        "statistic": 2.0,
+        "p_value": 0.375,
+        "mean_delta": 0.004839805656419005
+      },
+      "tabpfn2": {
+        "vs": "catb",
+        "statistic": 2.0,
+        "p_value": 0.375,
+        "mean_delta": 0.00393790804876068
+      }
+    }
+  }
+}
