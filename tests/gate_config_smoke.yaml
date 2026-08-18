@@ -1,0 +1,13 @@
+# Smoke/gate-unit-test config: same checks, synthetic dataset tokens.
+require_calibration: true
+require_optimism_gap: false     # smoke may run untuned models only
+require_stats: true
+require_subsample_freeze: true
+require_all_ok: true
+tuning_n_trials: 2
+require_tuning_log_for: []
+device_policy: {logreg: cpu, xgb: cpu}
+stats_artifacts: [stats/omnibus.json, stats/posthoc.json]
+comparative_claims:
+  - id: "smoke_claim"
+    independent_datasets: [synth_iid]

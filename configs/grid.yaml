@@ -1,0 +1,74 @@
+# Grid configuration: the single source of truth for the runner, the worker,
+# the statistics and the gate.
+# Suites are kept DISJOINT by source: TableShift subset excludes ACS-derived
+# tasks because the WhyShift suite is ACS-based (pre-registered selection
+# criterion). data_prep.py verifies actual availability and
+# writes data/prepared/registry.json — the realised dataset list. Any candidate
+# that fails credential-free download is dropped and recorded there.
+
+seeds: [0, 1, 2, 3, 4]
+
+subsample:
+  train_cap: 10000        # TabPFN v2 context limit; identical indices for ALL models
+  test_cap: 10000         # per split (ID and OOD)
+
+datasets:
+  tableshift:             # candidates; non-ACS tasks only. Availability verified at prep.
+    - brfss_diabetes
+    # brfss_blood_pressure (deliberate drop): the TableShift hypertension
+    # preprocessing expects a variable absent from the current source file
+    # vintage; the task shares its source family with brfss_diabetes.
+    - diabetes_readmission
+    # nhanes_lead (deliberate drop): the provider moved the NHANES transport
+    # endpoints, so the URLs baked into TableShift return HTML error pages
+    # instead of data files.
+    - anes              # free-account access; drops cleanly without credentials
+    - heloc             # FICO licence click-through; drops cleanly if absent
+    - assistments
+    - college_scorecard
+    # physionet (deliberate drop): the host is unreachable from our compute
+    # environment, and the TableShift downloader retries indefinitely rather
+    # than failing, which stalls preparation.
+  whyshift:               # ACS PUMS via folktables, WhyShift-style spatial shift
+    - acs_income_ca2sd    # train CA -> OOD SD (WhyShift setting)
+    - acs_income_ca2pr    # train CA -> OOD PR
+    - acs_pubcov_ca2sd
+    - acs_mobility_ca2sd
+  openml_cc18:            # i.i.d. reference, binary subset, by OpenML dataset id
+    - cc18_31             # credit-g
+    - cc18_44             # spambase
+    - cc18_151            # electricity
+    - cc18_1053           # jm1
+    - cc18_1067           # kc1
+    - cc18_1068           # pc1
+    - cc18_1461           # bank-marketing
+    - cc18_1486           # nomao
+    - cc18_1489           # phoneme
+    - cc18_1590           # adult
+
+models:
+  # device policy is enforced per model and asserted by the gate (check F2):
+  # tabular FMs run on GPU; trees / linear / MLP run on CPU with pinned threads
+  # (boosting on GPU at n<=10k is markedly slower; see README).
+  tabpfn2:    {kind: tfm,  device: cuda}
+  tabicl:     {kind: tfm,  device: cuda}
+  tabpfn25:   {kind: tfm,  device: cuda}   # v2.5 default ckpt = real-data finetuned (RealTabPFN lineage)
+  xgb:        {kind: gbdt, device: cpu, tuned: true}
+  lgbm:       {kind: gbdt, device: cpu, tuned: true}
+  catb:       {kind: gbdt, device: cpu, tuned: true}
+  logreg:     {kind: linear, device: cpu}
+  mlp:        {kind: mlp,  device: cpu}
+
+tuning:                    # GBDT HPO: disclosed, matched, logged per unit
+  n_trials: 30
+  sampler: random          # primary: random search (clean budget semantics);
+                           # tpe available as robustness ablation (--sampler tpe)
+  cv_folds: 3
+  budget_checkpoints: [0, 5, 10, 20, 30]   # 0 = library defaults; budget-curve evals
+  threads: 8               # pinned: n_jobs / num_threads / thread_count per fit
+
+runtime:
+  timeout_s: 1800          # per-unit hard timeout
+  predict_chunk: 4096      # torch predict chunk; halved on OOM, one retry ladder
+  models_dir: models       # ROOT-relative; checkpoint cache written by download_models.py
+  data_dir: data/prepared  # ROOT-relative; written by data_prep.py; offline after prep

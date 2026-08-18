@@ -1,0 +1,41 @@
+# Gate configuration. Written BEFORE the final pass, so that the acceptance
+# conditions cannot be adjusted to whatever the numbers turn out to be.
+# Dataset tokens below must match the REALISED registry; re-check this file
+# against data/prepared/registry.json right after prep (pipeline.sh prints a
+# diff reminder) and again before the final pass. No waivers: every claim
+# has cross-suite external validity by construction.
+
+require_calibration: true
+require_optimism_gap: true
+require_stats: true
+require_subsample_freeze: true
+require_all_ok: true
+
+tuning_n_trials: 30
+require_tuning_log_for: [xgb, lgbm, catb]
+
+device_policy:
+  tabpfn2: cuda
+  tabicl: cuda
+  tabpfn25: cuda
+  xgb: cpu
+  lgbm: cpu
+  catb: cpu
+  logreg: cpu
+  mlp: cpu
+
+stats_artifacts:
+  - stats/omnibus.json
+  - stats/posthoc.json
+
+# Claims. Independent datasets = datasets from the OTHER suites, so each claim
+# derived on one suite is checked on data from a different source family.
+comparative_claims:
+  - id: "tfm_advantage_shrinks_or_inverts_under_shift"
+    independent_datasets: [ts_brfss_diabetes, ts_diabetes_readmission,
+                           acs_income_ca2sd, acs_pubcov_ca2sd]
+  - id: "calibration_degrades_faster_than_accuracy_under_shift"
+    independent_datasets: [ts_brfss_diabetes, acs_income_ca2sd,
+                           acs_mobility_ca2sd]
+  - id: "reported_advantage_partly_reflects_tuning_budget_asymmetry"
+    independent_datasets: [cc18_31, cc18_44, cc18_1590, ts_diabetes_readmission]
