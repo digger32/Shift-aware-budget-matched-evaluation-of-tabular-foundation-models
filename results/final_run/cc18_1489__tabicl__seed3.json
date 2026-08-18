@@ -1,0 +1,41 @@
+{
+  "dataset": "cc18_1489",
+  "suite": "openml_cc18",
+  "model": "tabicl",
+  "seed": 3,
+  "device": "cuda",
+  "kind": "tfm",
+  "subsample": {
+    "train_hash": "08aaa0108b060f0e",
+    "id_hash": "99a4caab7d81c8f0",
+    "ood_hash": null,
+    "n_train": 3782,
+    "n_id": 1622,
+    "n_ood": 0
+  },
+  "metrics": {
+    "acc": 0.9075215782983971,
+    "bacc": 0.8909524542801414,
+    "logloss": 0.21479277052812115,
+    "auroc": 0.9664048865619546,
+    "brier": 0.06495837312588436,
+    "ece": 0.02264073996261479,
+    "smece": 0.024864565009683266
+  },
+  "tuning": null,
+  "budget_curve": [],
+  "wall_s": 5.2,
+  "peak_vram_alloc_mb": 725,
+  "peak_vram_reserved_mb": 822,
+  "versions": {
+    "numpy": "1.26.4",
+    "scikit-learn": "1.5.2",
+    "xgboost": "2.1.3",
+    "lightgbm": "4.5.0",
+    "catboost": "1.2.10",
+    "optuna": "4.1.0",
+    "tabpfn": "8.1.0",
+    "tabicl": "2.1.1",
+    "torch": "2.5.1"
+  }
+}
