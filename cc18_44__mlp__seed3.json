@@ -1,0 +1,39 @@
+{
+  "dataset": "cc18_44",
+  "suite": "openml_cc18",
+  "model": "mlp",
+  "seed": 3,
+  "device": "cpu",
+  "kind": "mlp",
+  "subsample": {
+    "train_hash": "67c06674c44df475",
+    "id_hash": "b7f60248239e0d68",
+    "ood_hash": null,
+    "n_train": 3220,
+    "n_id": 1381,
+    "n_ood": 0
+  },
+  "metrics": {
+    "acc": 0.9326574945691528,
+    "bacc": 0.929965870756905,
+    "logloss": 0.18169137994110393,
+    "auroc": 0.9783738316114976,
+    "brier": 0.05096526354907481,
+    "ece": 0.01724548977216374,
+    "smece": 0.020271004556271448
+  },
+  "tuning": null,
+  "budget_curve": [],
+  "wall_s": 1.7,
+  "versions": {
+    "numpy": "1.26.4",
+    "scikit-learn": "1.5.2",
+    "xgboost": "2.1.3",
+    "lightgbm": "4.5.0",
+    "catboost": "1.2.10",
+    "optuna": "4.1.0",
+    "tabpfn": "8.1.0",
+    "tabicl": "2.1.1",
+    "torch": "2.5.1"
+  }
+}
