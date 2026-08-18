@@ -1,0 +1,49 @@
+{
+  "dataset": "acs_income_ca2sd",
+  "suite": "whyshift",
+  "model": "tabpfn2",
+  "seed": 4,
+  "device": "cuda",
+  "kind": "tfm",
+  "subsample": {
+    "train_hash": "11c85e6e2f93efce",
+    "id_hash": "c0fdccea87565f81",
+    "ood_hash": "f7110a8235f16bdd",
+    "n_train": 10000,
+    "n_id": 10000,
+    "n_ood": 4899
+  },
+  "metrics": {
+    "acc": 0.8158,
+    "bacc": 0.8097320804535217,
+    "logloss": 0.39788243084126285,
+    "auroc": 0.8965995806476664,
+    "brier": 0.12767437857091218,
+    "ece": 0.013239093007147316,
+    "smece": 0.014030253693020382,
+    "acc_ood": 0.7174933659930598,
+    "bacc_ood": 0.7476750394415783,
+    "logloss_ood": 0.5267462598302335,
+    "auroc_ood": 0.8322035625087718,
+    "brier_ood": 0.18033665126859522,
+    "ece_ood": 0.16576383894780486,
+    "smece_ood": 0.16704772461561018,
+    "acc_degradation": 0.09830663400694017
+  },
+  "tuning": null,
+  "budget_curve": [],
+  "wall_s": 13.9,
+  "peak_vram_alloc_mb": 796,
+  "peak_vram_reserved_mb": 906,
+  "versions": {
+    "numpy": "1.26.4",
+    "scikit-learn": "1.5.2",
+    "xgboost": "2.1.3",
+    "lightgbm": "4.5.0",
+    "catboost": "1.2.10",
+    "optuna": "4.1.0",
+    "tabpfn": "8.1.0",
+    "tabicl": "2.1.1",
+    "torch": "2.5.1"
+  }
+}

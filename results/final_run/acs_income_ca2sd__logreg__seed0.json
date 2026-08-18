@@ -1,0 +1,47 @@
+{
+  "dataset": "acs_income_ca2sd",
+  "suite": "whyshift",
+  "model": "logreg",
+  "seed": 0,
+  "device": "cpu",
+  "kind": "linear",
+  "subsample": {
+    "train_hash": "c449a332b1be83be",
+    "id_hash": "d4c7324b194c74e2",
+    "ood_hash": "f7110a8235f16bdd",
+    "n_train": 10000,
+    "n_id": 10000,
+    "n_ood": 4899
+  },
+  "metrics": {
+    "acc": 0.7797,
+    "bacc": 0.7690277767212662,
+    "logloss": 0.46048993274912625,
+    "auroc": 0.8592176449430293,
+    "brier": 0.14954797035458778,
+    "ece": 0.01767505288203862,
+    "smece": 0.020463453836723575,
+    "acc_ood": 0.7107572974076342,
+    "bacc_ood": 0.7223455564179437,
+    "logloss_ood": 0.5762171073964338,
+    "auroc_ood": 0.7983379158275291,
+    "brier_ood": 0.19149503866066636,
+    "ece_ood": 0.17319918937129777,
+    "smece_ood": 0.17301532441339146,
+    "acc_degradation": 0.06894270259236579
+  },
+  "tuning": null,
+  "budget_curve": [],
+  "wall_s": 1.1,
+  "versions": {
+    "numpy": "1.26.4",
+    "scikit-learn": "1.5.2",
+    "xgboost": "2.1.3",
+    "lightgbm": "4.5.0",
+    "catboost": "1.2.10",
+    "optuna": "4.1.0",
+    "tabpfn": "8.1.0",
+    "tabicl": "2.1.1",
+    "torch": "2.5.1"
+  }
+}
