@@ -5,8 +5,12 @@ the automated review gate that certifies a run, and the frozen artefacts of the
 study reported in the accompanying paper. Everything needed to re-run the study
 or to apply the protocol to other models and datasets is included.
 
-Anonymised for peer review. Author, affiliation, funding and acknowledgement
-information has been removed and will be restored on acceptance.
+Accompanies the paper *Tabular Foundation Models Under Covariate Shift: a
+Shift-Aware, Budget-Matched Evaluation Protocol*, AI4S-Bench workshop at IEEE
+ICDM 2026, by Sergei Kurashkin, Vadim Tynchenko, Aleksei Borodulin and Vladimir
+Bukhtoyarov (Artificial Intelligence Technology Scientific and Education Center,
+Bauman Moscow State Technical University; Department of Applied Artificial
+Intelligence, RUDN University).
 
 ## What the protocol does
 
@@ -53,12 +57,14 @@ src/bench_runner.py        job-based orchestrator: one subprocess per unit
 src/unit_worker.py         per-unit science: subsampling, fitting, tuning, metrics
 src/aggregate.py           unit records -> tidy CSVs
 src/stats.py               omnibus, post-hoc, per-suite and bootstrap statistics
-src/make_figures.py        the four displays
+src/make_figures.py        working displays produced by every run
+src/make_paper_figures.py  the publication figures reported in the paper
 src/review_gate.py         the automated gate; non-zero exit blocks reporting
 tests/test_gate.py         proves the gate separates a clean run from a dirty one
 pipeline.sh                one command per stage
 results/final_run/         the frozen certified run reported in the paper
-results/dataset_summary.csv  the realised datasets and evaluated split sizes
+results/registry.json      the realised datasets, their sizes, and every drop with its reason
+results/dataset_summary.csv  the same datasets with the split sizes actually evaluated
 ```
 
 ## Quickstart
@@ -139,9 +145,9 @@ All datasets are public. The three suites are kept disjoint by source: TableShif
 tasks that are not derived from the American Community Survey, spatial-shift tasks
 built from public census microdata through folktables, and a ten-dataset binary
 subset of OpenML-CC18 as an i.i.d. reference. Two candidate tasks require
-credentialed access and are dropped when the credentials are absent; three further
-candidates were dropped for reasons recorded in `configs/grid.yaml` and in the
-registry written by preparation.
+credentialed access and are dropped when the credentials are absent; four further
+candidates were dropped for reasons recorded verbatim in `results/registry.json`
+and in `configs/grid.yaml`.
 
 ## Environment
 
@@ -156,3 +162,18 @@ provenance of a number does not depend on this file.
 ## Licence
 
 Released under the MIT Licence; see `LICENSE`.
+
+## Citation
+
+```bibtex
+@inproceedings{kurashkin2026shiftaware,
+  author    = {Kurashkin, Sergei and Tynchenko, Vadim and Borodulin, Aleksei
+               and Bukhtoyarov, Vladimir},
+  title     = {Tabular Foundation Models Under Covariate Shift: a Shift-Aware,
+               Budget-Matched Evaluation Protocol},
+  booktitle = {IEEE International Conference on Data Mining Workshops (ICDMW),
+               AI4S-Bench},
+  year      = {2026}
+}
+```
+Page numbers and DOI will be added when the proceedings are published.
